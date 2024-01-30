@@ -11,11 +11,11 @@ float ReadDistance();
 
 
 const int MAX_USS_DISTANCE_CM = 200; //The maximum reading for the ultrasonic sensor, used in initialization in setup()
-const int GROUND_THRESHOLD_HEIGHT_CM = 15; 
-const int GROUND_HEIGHT_CM = 12;
+const int GROUND_THRESHOLD_HEIGHT_CM = 20; 
+const int GROUND_HEIGHT_CM = 15;
 
-const int SERVO_OPEN = 10; //Position of servo for claw to be open
-const int SERVO_CLOSED = 55; //Position of servo for claw to be closed
+const int SERVO_OPEN = 30; //Position of servo for claw to be open
+const int SERVO_CLOSED = 180; //Position of servo for claw to be closed
 
 //Servo pins
 const int SERVO_DATA = 9;
@@ -114,16 +114,12 @@ void loop() {
 }
 
 void OpenClaw(){
-  delay(100);
-
   clawServo.write(SERVO_OPEN);
   clawPosition = true;
   clawActuated = true;
 }
 
 void CloseClaw(){
-  delay(100);
-
   clawServo.write(SERVO_CLOSED);
   clawPosition = false;
   clawActuated = true;
@@ -138,6 +134,11 @@ void SmoothDistance(){
   //By updating the distance by the change in distance, the average of multiple values can be use without actually storing multiple values
   //using factor of 0.1 approximates average of the last 10 readings
   distance += 0.1 * (ReadDistance() - distance); 
+
+  if(distance >= MAX_USS_DISTANCE_CM)
+  {
+    distance = MAX_USS_DISTANCE_CM;
+  }
   return distance;
 }
 
