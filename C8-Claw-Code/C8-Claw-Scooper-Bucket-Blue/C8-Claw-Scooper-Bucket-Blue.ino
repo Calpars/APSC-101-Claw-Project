@@ -14,8 +14,8 @@ const int MAX_USS_DISTANCE_CM = 200; //The maximum reading for the ultrasonic se
 const int GROUND_THRESHOLD_HEIGHT_CM = 20; 
 const int GROUND_HEIGHT_CM = 15;
 
-const int SERVO_OPEN = 0; //Position of servo for claw to be open  //For first claw this value is 30, for second this value is 0
-const int SERVO_CLOSED = 120; //Position of servo for claw to be closed //For first claw this value is 120, for second this value is 180
+const int SERVO_OPEN = 0; //Position of servo for claw to be open  //For Green claw this value is 30, for Blue this value is 0
+const int SERVO_CLOSED = 120; //Position of servo for claw to be closed //For Green claw this value is 180, for blue this value is 120
 
 //Servo pins
 const int SERVO_DATA = 9;
