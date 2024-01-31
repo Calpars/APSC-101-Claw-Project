@@ -1,0 +1,12 @@
+Geared Scooper Bucket
+Open:
+Closed:
+
+Blue Scooper Bucket
+Open: 0
+Closed: 120
+
+Green Scooper Bucket
+Open: 30
+Closed: 180
+
