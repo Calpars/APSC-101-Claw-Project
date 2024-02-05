@@ -27,8 +27,7 @@ const int USS_ECHO = 6;
 const int USS_GND = 7;
 
 //Height indicator LED
-const int LED_INDICATOR_VCC = 2;
-const int LED_INDICATOR_GND = 3;
+const int LED_INDICATOR = 13;
 
 
 
@@ -57,11 +56,9 @@ void setup() {
 
 
   //LED indicator initialization
-  pinMode(LED_INDICATOR_VCC, OUTPUT);
-  pinMode(LED_INDICATOR_GND, OUTPUT);
+  pinMode(LED_INDICATOR, OUTPUT);
 
-  digitalWrite(LED_INDICATOR_VCC, LOW);
-  digitalWrite(LED_INDICATOR_GND, LOW);
+  digitalWrite(LED_INDICATOR, LOW);
 
   //Serial Initialization
   Serial.begin(115200);
@@ -69,8 +66,9 @@ void setup() {
 }
 
 void loop() {
-  Serial.print(distance);
-  Serial.println();
+  //Uncomment for debugging
+  //Serial.print(distance);
+  //Serial.println();
   //Read a new distance value from the ultrasonic sensor and apply filtering
   SmoothDistance();
 
@@ -88,11 +86,11 @@ void loop() {
     clawEnabled = false;
     clawActuated = false;
 
-    digitalWrite(LED_INDICATOR_VCC, HIGH);
+    digitalWrite(LED_INDICATOR, HIGH);
   }
   else
   {
-    digitalWrite(LED_INDICATOR_VCC, LOW);
+    digitalWrite(LED_INDICATOR, LOW);
   }
 
   if(distance <= GROUND_HEIGHT_CM && clawEnabled && !clawActuated)
